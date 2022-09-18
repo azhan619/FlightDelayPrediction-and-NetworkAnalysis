@@ -6,7 +6,7 @@ import numpy as np
 def main():
     
     flights_data = pd.read_csv('2018.csv')
-    # filtering data to these passenger airlines only
+    # filtering data for selected airlines
     airline_names = {
     'UA':'United Airlines','WN':'Southwest Airlines','YV':'Mesa Airline','AS':'Alaska Airlines','9E':'Endeavor Air','B6':'JetBlue Airways','EV':'ExpressJet','F9':'Frontier Airlines',
     'NK':'Spirit Airlines','OH':'PSA Airlines','OO':'SkyWest Airlines','G4':'Allegiant Air','MQ':'Envoy Air',
@@ -61,7 +61,7 @@ def main():
     
     #print(str(flights_data.shape))
 
-    # remove the airports for which we do not have information
+    # remove the airports with missing information
     for x in flights_diff:
 
         flights_data = flights_data[flights_data.ORIGIN != x ]
@@ -101,7 +101,7 @@ def main():
     #print(flights_diff)
     #print(df2_diff)
 
-    # dropping columns that will now be used for the model
+    # drop un-used columns from data
     drop_columns = ['AIR_TIME','ACTUAL_ELAPSED_TIME','ARR_TIME','DEP_TIME',
             'DIVERTED','WHEELS_OFF','WHEELS_ON','CANCELLATION_CODE','TAXI_OUT','TAXI_IN',
             'CANCELLED','CARRIER_DELAY', 'WEATHER_DELAY', 'NAS_DELAY', 'SECURITY_DELAY', 
